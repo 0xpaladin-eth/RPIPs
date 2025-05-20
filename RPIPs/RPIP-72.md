@@ -121,7 +121,7 @@ _Copied from RPIP-71_
 - How gas efficient is it to calculate `protocol_withdrawable_liquidity_current`? The higher the MAX_WITHDRAWABLE_BALANCE, the fewer balances to add together. OR, just keep a running total on deposits and withdrawals.
 - MEV theft? At what balance does MEV theft become a problem?
 - What's the selection heuristic on withdrawal? Who gets drawn down first?
-- Partial withdraws requie 0x1 or 0x2... do we have 0x0 addresses? Can we just exlude them?
+- Partial withdraws require 0x1 addresses... do we have 0x0 addresses? Can we just exclude them?
 
 ## Rationale
 The rationale for partial withdrawals over validator exits (besides node operators not wanting to get force exited), is that the partial withdrawal queue is very efficient compared to validator exits.
