@@ -11,6 +11,10 @@ created: 2025-05-20
 requires (*optional): 
 ---
 
+# WITHDRAWN
+
+Parital withdrawals aren't significantly faster than exits per https://piertwo.com/insights/pectra-withdrawals-explained, so it's not a big improvement over RPIP-71
+
 ## Abstract
 rETH does not currently have a mechanism for stakers to burn (aka redeem) rETH for the full fair value of the underlying protocol ETH, even if they were prepared to wait for a validator exit.
 
