@@ -98,19 +98,13 @@ else
 
 Existing burn mechanism is unchanged.
 
-Add a new method, which burns if possible and requests as an EIP-7251 partial withdrawal if not.
+Add a new method, which requests an EIP-7251 partial withdrawal;
 ```
 function requestBurn(uint256 _rethAmount) override external {
-    //try regular burn if there's idle ETH
-    uint256 ethBalance = getTotalCollateral();
-    if (ethBalance > _rethAmount) { 
-        burn(_rethAmount);
-        return;
-    }
     //otherwise, request a partial withdrawal (reuquires a fee in ETH, UI should calculate)
     target_maxEB_validator = select the target validator();
     (bool ret, ) = eip7002WithdrawalContract.call{value: msg.value}(abi.encodePacked(target_maxEB_validator.pubkey, _rethAmount));
-    //if it worked, send the ETH to msg.sender
+    //if it worked, send the ETH on to msg.sender
     //Will arrive "soon", probably next block
 }
 ```
@@ -127,6 +121,7 @@ _Copied from RPIP-71_
 - How gas efficient is it to calculate `protocol_withdrawable_liquidity_current`? The higher the MAX_WITHDRAWABLE_BALANCE, the fewer balances to add together. OR, just keep a running total on deposits and withdrawals.
 - MEV theft? At what balance does MEV theft become a problem?
 - What's the selection heuristic on withdrawal? Who gets drawn down first?
+- Partial withdraws requie 0x1 or 0x2... do we have 0x0 addresses? Can we just exlude them?
 
 ## Rationale
 The rationale for partial withdrawals over validator exits (besides node operators not wanting to get force exited), is that the partial withdrawal queue is very efficient compared to validator exits.
